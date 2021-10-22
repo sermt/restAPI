@@ -1,15 +1,14 @@
 const express = require('express');
 const {productsController} =require('./controller');
-const { productsService } = require('./services');
 const router=express.Router()
 module.exports.ProductsAPI=(app)=>{
     router
     .get('/', productsController.getProducts)// /
-    .get('/:id',productsController.getProduct)// /n
+    .get('/reportes', productsController.generateReport)
     .post('/',productsController.createProducts)
-
-    .get('/',(req,res)=>{
-
-    })
+    .get('/:id',productsController.getProduct)// /n
+   
+   
+   
     app.use('/api/products',router)
 }

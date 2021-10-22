@@ -19,7 +19,7 @@ module.exports.productsController={
         let product=await productsService.getById(id);
         Response.success(res,200,"Producto",product);
         } catch (error) {
-            console.log(error);
+           
             Response.error(res)
         }
     },
@@ -38,5 +38,15 @@ module.exports.productsController={
             console.log(error)
            Response.error(res)
         }
+    },
+
+
+    generateReport: async (req,res)=>{
+     try {
+         productsService.generateReport("Inventario",res);
+     } catch (error) {
+         console.log(error);
+        Response.error(res)
+     }
     }
 };
