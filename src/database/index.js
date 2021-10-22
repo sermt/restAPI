@@ -1,11 +1,11 @@
 const {MongoClient}=require('mongodb');
 const debug=require('debug')('app:module-database');
-const {config}=require('package../config/index');
+const {Config}=require('../config/index');
 let connection=null;
-module.exports.Database=(collection)=>new Promise((resolve,reject)=>{
+module.exports.Database=(collection)=>new Promise(async (resolve,reject)=> {
 try {
     if(!connection){
-        const client=new MongoClient(config.mongoURL);
+        const client=new MongoClient(Config.mongoURL);
         connection=await client.connect();
         debug('Nueva conexion realizada');
         
